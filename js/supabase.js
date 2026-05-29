@@ -26,29 +26,28 @@ const logoutButton =
 const userInfo =
   document.getElementById("userInfo");
 
-async function updateAuthUI(){
+async function updateAuthUI() {
 
   const {
     data: { session },
   } =
-  await window.supabaseClient
-    .auth
-    .getSession();
+    await window.supabaseClient
+      .auth
+      .getSession();
 
   const user =
     session?.user;
 
-  if(user){
+  if (user) {
 
     const profile =
       await ensureProfile();
 
-    if(userInfo){
+    if (userInfo) {
 
       userInfo.innerHTML = `
 
-        ${
-          profile?.avatar_url
+        ${profile?.avatar_url
           ? `
             <img
               src="${profile.avatar_url}"
@@ -67,32 +66,32 @@ async function updateAuthUI(){
 
     }
 
-    if(loginButton){
+    if (loginButton) {
       loginButton.style.display = "none";
     }
 
-    if(logoutButton){
+    if (logoutButton) {
       logoutButton.style.display = "inline-block";
     }
 
   } else {
 
-    if(userInfo){
+    if (userInfo) {
       userInfo.textContent = "";
     }
 
-    if(loginButton){
+    if (loginButton) {
       loginButton.style.display = "inline-block";
     }
 
-    if(logoutButton){
+    if (logoutButton) {
       logoutButton.style.display = "none";
     }
 
   }
 }
 
-if(loginButton){
+if (loginButton) {
 
   loginButton.addEventListener("click", async () => {
 
@@ -103,11 +102,11 @@ if(loginButton){
           provider: "google",
           options: {
             redirectTo:
-              "http://127.0.0.1:5500/index.html",
+              `${window.location.origin}/index.html`,
           },
         });
 
-    if(error){
+    if (error) {
       console.error(error);
       alert("ログインに失敗しました。");
     }
@@ -116,7 +115,7 @@ if(loginButton){
 
 }
 
-if(logoutButton){
+if (logoutButton) {
 
   logoutButton.addEventListener("click", async () => {
 
