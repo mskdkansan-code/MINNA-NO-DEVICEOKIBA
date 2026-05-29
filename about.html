@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>
+    サイトについて
+  </title>
+
+  <link
+    rel="icon"
+    href="./images/ファビコン.jpeg"
+  />
+
+  <link
+    rel="stylesheet"
+    href="./css/style.css"
+  >
+
+</head>
+
+<body>
+
+  <header class="header">
+
+    <div class="header-inner">
+
+      <h1 class="logo">
+        DEVICE REVIEW
+      </h1>
+
+      <nav class="nav-center">
+
+        <ul class="nav-list">
+
+          <li>
+            <a href="./index.html">
+              REVIEW一覧
+            </a>
+          </li>
+
+          <li>
+            <a href="./board.html">
+              掲示板
+            </a>
+          </li>
+
+          <li>
+            <a href="./profile.html">
+              プロフィール
+            </a>
+          </li>
+
+          <li>
+            <a href="./about.html">
+              サイトについて
+            </a>
+          </li>
+
+        </ul>
+
+      </nav>
+
+      <div class="auth-area">
+
+        <div id="userInfo"></div>
+
+        <div class="auth-buttons">
+
+          <button id="loginButton">
+            Google Login
+          </button>
+
+          <button id="logoutButton">
+            Logout
+          </button>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </header>
+
+  <main class="container">
+
+    <section class="about-page">
+
+      <h2>
+        サイトについて
+      </h2>
+
+      <p>
+        みんなのデバイス置き場は、
+        ゲーミングデバイス・ガジェット好きのための
+        レビュー共有サイトです。
+      </p>
+
+      <p>
+        マウス、キーボード、マウスパッド、
+        オーディオ、モニターなど、
+        実際に使用したデバイスの感想や評価を投稿できます。
+      </p>
+
+      <h3>
+        主な機能
+      </h3>
+
+      <p>
+        ・レビュー投稿
+        <br>
+        ・掲示板
+        <br>
+        ・プロフィール(Twitter連携)
+        <br>
+        ・コメント＆いいね機能等 ...
+      </p>
+
+      <h3>
+        掲示板について
+      </h3>
+
+      <p>
+        掲示板では、
+        デバイス相談・感度共有・雑談など、
+        レビュー以外の交流ができます。
+      </p>
+
+      <h3>
+        プロフィール機能
+      </h3>
+
+      <p>
+        ユーザーごとにプロフィールを作成でき、
+        アイコン・自己紹介・Xアカウントを
+        設定できます。
+      </p>
+
+      <h3>
+        お問い合わせ
+      </h3>
+
+      <p>
+        ご質問・ご意見がある場合は、
+        Xアカウントまでご連絡ください。
+      </p>
+
+      <div class="creator-card">
+
+        <img
+          src="./images/ファビコン.jpeg"
+          class="creator-avatar"
+          alt="creator icon"
+        >
+
+        <div class="creator-info">
+
+          <h3 class="creator-name">
+            imu
+          </h3>
+
+          <p class="creator-description">
+            一般金なし大学生。今年で１９歳になります。
+            <br>
+            VALORANTを中心に、FPSゲームが大好きです。
+            <br>
+            競技用のデバイスや便利なガジェットを集めています。
+          </p>
+
+          <a
+            href="https://x.com/0w0_fps_trpg"
+            target="_blank"
+            class="twitter-link"
+          >
+            @0w0_fps_trpg
+          </a>
+
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+  <footer class="footer">
+
+    <div class="container">
+
+      <p>
+        May the 4th be with you.
+      </p>
+
+    </div>
+
+  </footer>
+
+  <a
+    href="./write-review.html"
+    class="floating-button"
+  >
+    +
+  </a>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+
+  <script src="./js/profile.js"></script>
+
+  <script src="./js/supabase.js"></script>
+
+</body>
+
+</html>

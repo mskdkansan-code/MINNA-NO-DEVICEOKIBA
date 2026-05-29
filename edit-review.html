@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+
+  <meta charset="UTF-8" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>
+    Edit Review
+  </title>
+
+  <link rel="icon" href="./images/ファビコン.jpeg" />
+
+  <link rel="stylesheet" href="./css/style.css" />
+
+</head>
+
+<body>
+
+  <header class="header">
+
+    <div class="header-inner">
+
+      <h1 class="logo">
+        DEVICE REVIEW
+      </h1>
+
+      <nav class="nav-center">
+
+        <ul class="nav-list">
+
+          <li>
+            <a href="./index.html">
+              REVIEW一覧
+            </a>
+          </li>
+
+          <li>
+            <a href="./board.html">
+              掲示板
+            </a>
+          </li>
+
+          <li>
+            <a href="./profile.html">
+              プロフィール
+            </a>
+          </li>
+
+          <li>
+            <a href="./about.html">
+              サイトについて
+            </a>
+          </li>
+
+        </ul>
+
+      </nav>
+
+      <div class="auth-area">
+
+        <div id="userInfo"></div>
+
+        <div class="auth-buttons">
+
+          <button id="loginButton">
+            Google Login
+          </button>
+
+          <button id="logoutButton">
+            Logout
+          </button>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </header>
+
+  <main class="container">
+
+    <section class="write-review">
+
+      <h2>
+        Edit Review
+      </h2>
+
+      <form class="review-form" id="editForm">
+
+        <input type="text" id="title" placeholder="Review Title">
+
+        <select id="category">
+
+          <option>
+            Mouse
+          </option>
+
+          <option>
+            Keyboard
+          </option>
+
+          <option>
+            Mousepad
+          </option>
+
+          <option>
+            Audio
+          </option>
+
+          <option>
+            Monitor
+          </option>
+
+          <option>
+            Mousefeet
+          </option>
+
+          <option>
+            Other
+          </option>
+
+        </select>
+
+        <img id="currentImage" class="image-preview" alt="Current Image">
+
+        <input type="text" id="price" placeholder="Price">
+
+        <input type="text" id="product_url" placeholder="Product URL">
+
+        <textarea id="description" placeholder="Write your review..."></textarea>
+
+        <input type="number" id="rating" placeholder="Rating (1-5)" min="1" max="5" step="0.1">
+
+        <div class="form-actions">
+
+          <button type="submit" id="saveButton">
+            Save Changes
+          </button>
+
+          <a href="./index.html" class="cancel-button">
+            Cancel
+          </a>
+
+        </div>
+
+      </form>
+
+    </section>
+
+  </main>
+
+  <footer class="footer">
+
+    <div class="container">
+
+      <p>
+        May the 4th be with you.
+      </p>
+
+    </div>
+
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+
+  <script src="./js/profile.js"></script>
+
+  <script src="./js/supabase.js"></script>
+
+  <script src="./js/edit-review.js"></script>
+
+</body>
+
+</html>

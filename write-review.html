@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>
+    Write Review
+  </title>
+
+  <link rel="icon" href="./images/ファビコン.jpeg" />
+
+  <link rel="stylesheet" href="./css/style.css" />
+
+</head>
+
+<body>
+
+  <header class="header">
+
+    <div class="header-inner">
+
+      <h1 class="logo">
+        DEVICE REVIEW
+      </h1>
+
+      <nav class="nav-center">
+
+        <ul class="nav-list">
+
+          <li>
+            <a href="./index.html">
+              REVIEW一覧
+            </a>
+          </li>
+
+          <li>
+            <a href="./board.html">
+              掲示板
+            </a>
+          </li>
+
+          <li>
+            <a href="./profile.html">
+              プロフィール
+            </a>
+          </li>
+
+          <li>
+            <a href="./about.html">
+              サイトについて
+            </a>
+          </li>
+
+        </ul>
+
+      </nav>
+
+      <div class="auth-area">
+
+        <div id="userInfo"></div>
+
+        <div class="auth-buttons">
+
+          <button id="loginButton">
+            Google Login
+          </button>
+
+          <button id="logoutButton">
+            Logout
+          </button>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </header>
+
+  <main class="container">
+
+    <section class="write-review">
+
+      <h2>
+        Write Review
+      </h2>
+
+      <form class="review-form" id="reviewForm">
+
+        <input type="text" placeholder="Review Title" id="title">
+
+        <select id="category">
+
+          <option>
+            Mouse
+          </option>
+
+          <option>
+            Keyboard
+          </option>
+
+          <option>
+            Mousepad
+          </option>
+
+          <option>
+            Audio
+          </option>
+
+          <option>
+            Monitor
+          </option>
+
+          <option>
+            Mousefeet
+          </option>
+
+          <option>
+            Other
+          </option>
+
+        </select>
+
+        <input type="file" id="image" accept="image/*">
+
+        <img id="imagePreview" class="image-preview" alt="preview" />
+
+        <input type="text" placeholder="Price" id="price">
+
+        <input type="text" placeholder="Product URL" id="product_url">
+
+        <textarea placeholder="Write your review..." id="description"></textarea>
+
+        <input type="number" placeholder="Rating (1-5)" min="1" max="5" step="0.1" id="rating">
+
+        <button type="submit">
+          Post Review
+        </button>
+
+      </form>
+
+    </section>
+
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+
+  <script src="./js/profile.js"></script>
+
+  <script src="./js/supabase.js"></script>
+
+  <script>
+
+    const form =
+      document.getElementById("reviewForm");
+
+    const imageInput =
+      document.getElementById("image");
+
+    const imagePreview =
+      document.getElementById("imagePreview");
+
+    imageInput.addEventListener("change", () => {
+
+      const file =
+        imageInput.files[0];
+
+      if (!file) {
+
+        imagePreview.style.display =
+          "none";
+
+        imagePreview.src = "";
+
+        return;
+      }
+
+      imagePreview.src =
+        URL.createObjectURL(file);
+
+      imagePreview.style.display =
+        "block";
+
+    });
+
+    form.addEventListener("submit", async (e) => {
+
+      e.preventDefault();
+
+      const submitButton =
+        form.querySelector("button[type='submit']");
+
+      submitButton.disabled = true;
+
+      submitButton.textContent =
+        "投稿中...";
+
+      const {
+        data: { session },
+      } =
+        await window.supabaseClient
+          .auth
+          .getSession();
+
+      const user =
+        session?.user;
+
+      if (!user) {
+
+        alert("投稿するにはログインしてください。");
+
+        submitButton.disabled = false;
+
+        submitButton.textContent =
+          "Post Review";
+
+        return;
+      }
+
+      const title =
+        document.getElementById("title")
+          .value
+          .trim();
+
+      const category =
+        document.getElementById("category")
+          .value;
+
+      const imageFile =
+        document.getElementById("image")
+          .files[0];
+
+      const price =
+        document.getElementById("price")
+          .value
+          .trim();
+
+      const product_url =
+        document.getElementById("product_url")
+          .value
+          .trim();
+
+      const description =
+        document.getElementById("description")
+          .value
+          .trim();
+
+      const rating =
+        Number(
+          document.getElementById("rating")
+            .value
+        );
+
+      if (
+        !title ||
+        !imageFile ||
+        !description ||
+        !rating
+      ) {
+
+        alert("必須項目を入力してください。");
+
+        submitButton.disabled = false;
+
+        submitButton.textContent =
+          "Post Review";
+
+        return;
+      }
+
+      if (rating < 1 || rating > 5) {
+
+        alert("評価は1〜5で入力してください。");
+
+        submitButton.disabled = false;
+
+        submitButton.textContent =
+          "Post Review";
+
+        return;
+      }
+
+      const fileName =
+        `${Date.now()}-${imageFile.name}`;
+
+      const { error: uploadError } =
+        await window.supabaseClient
+          .storage
+          .from("review-images")
+          .upload(fileName, imageFile);
+
+      if (uploadError) {
+
+        console.error(uploadError);
+
+        alert("画像アップロードに失敗しました。");
+
+        submitButton.disabled = false;
+
+        submitButton.textContent =
+          "Post Review";
+
+        return;
+      }
+
+      const { data: imageData } =
+        window.supabaseClient
+          .storage
+          .from("review-images")
+          .getPublicUrl(fileName);
+
+      const profile =
+        await ensureProfile();
+
+      const review = {
+
+        title: title,
+
+        category: category,
+
+        image: imageData.publicUrl,
+
+        price: price,
+
+        product_url: product_url,
+
+        description: description,
+
+        rating: rating,
+
+        username: profile.username,
+
+        user_id: user.id,
+
+      };
+
+      const {
+        data: insertedReview,
+        error
+      } =
+        await window.supabaseClient
+          .from("reviews")
+          .insert([review])
+          .select()
+          .single();
+
+      if (error) {
+
+        console.error(error);
+
+        alert("投稿に失敗しました。");
+
+        submitButton.disabled = false;
+
+        submitButton.textContent =
+          "Post Review";
+
+        return;
+      }
+
+      const reviewUrl =
+        `${window.location.origin}/review-detail.html?id=${insertedReview.id}`;
+
+      const shareText =
+        `レビューを公開しました！
+
+      ${title}
+
+      ${reviewUrl}
+
+      #みんなのデバイス置き場
+      #DeviceReview`;
+
+      const shareUrl =
+        `https://twitter.com/intent/tweet?text=${encodeURIComponent(shareText)}`;
+
+      const shouldShare =
+        confirm("レビューを投稿しました！Xで共有しますか？");
+
+      if (shouldShare) {
+        window.open(shareUrl, "_blank");
+      }
+
+      window.location.href =
+        "./index.html";
+
+    });
+
+  </script>
+
+</body>
+
+</html>

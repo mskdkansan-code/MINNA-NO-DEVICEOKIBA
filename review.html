@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+
+  <meta charset="UTF-8" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>
+    Review Detail
+  </title>
+
+  <link rel="icon" href="./images/ファビコン.jpeg" />
+
+  <link rel="stylesheet" href="./css/style.css" />
+
+</head>
+
+<body>
+
+  <header class="header">
+
+    <div class="header-inner">
+
+      <h1 class="logo">
+        DEVICE REVIEW
+      </h1>
+
+      <nav class="nav-center">
+
+        <ul class="nav-list">
+
+          <li>
+            <a href="./index.html">
+              REVIEW一覧
+            </a>
+          </li>
+
+          <li>
+            <a href="./board.html">
+              掲示板
+            </a>
+          </li>
+
+          <li>
+            <a href="./profile.html">
+              プロフィール
+            </a>
+          </li>
+
+          <li>
+            <a href="./about.html">
+              サイトについて
+            </a>
+          </li>
+
+        </ul>
+
+      </nav>
+
+      <div class="auth-area">
+
+        <div id="userInfo"></div>
+
+        <div class="auth-buttons">
+
+          <button id="loginButton">
+            Google Login
+          </button>
+
+          <button id="logoutButton">
+            Logout
+          </button>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </header>
+
+  <main class="container">
+
+    <article class="review-page" id="reviewDetail">
+
+      <p class="empty-message">
+        レビューを読み込み中...
+      </p>
+
+    </article>
+
+    <div id="likeArea"></div>
+
+    <div id="deleteArea"></div>
+
+    <section class="comments-section">
+
+      <h3>
+        Comments
+      </h3>
+
+      <form id="commentForm" class="comment-form">
+
+        <textarea id="commentInput" placeholder="コメントを書く..."></textarea>
+
+        <button type="submit">
+          Post Comment
+        </button>
+
+      </form>
+
+      <div id="commentsList"></div>
+
+    </section>
+
+  </main>
+
+  <footer class="footer">
+
+    <div class="container">
+
+      <p>
+        May the 4th be with you.
+      </p>
+
+    </div>
+
+  </footer>
+
+  <a href="./write-review.html" class="floating-button">
+    +
+  </a>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+
+  <script src="./js/profile.js"></script>
+
+  <script src="./js/supabase.js"></script>
+
+  <script src="./js/review.js"></script>
+
+</body>
+
+</html>

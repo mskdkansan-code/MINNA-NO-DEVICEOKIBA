@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+
+  <meta charset="UTF-8" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>
+    User Profile
+  </title>
+
+  <link rel="icon" href="./images/ファビコン.jpeg" />
+
+  <link rel="stylesheet" href="./css/style.css" />
+
+</head>
+
+<body>
+
+  <header class="header">
+
+    <div class="header-inner">
+
+      <h1 class="logo">
+        DEVICE REVIEW
+      </h1>
+
+      <nav class="nav-center">
+
+        <ul class="nav-list">
+
+          <li>
+            <a href="./index.html">
+              REVIEW一覧
+            </a>
+          </li>
+
+          <li>
+            <a href="./board.html">
+              掲示板
+            </a>
+          </li>
+
+          <li>
+            <a href="./profile.html">
+              プロフィール
+            </a>
+          </li>
+
+          <li>
+            <a href="./about.html">
+              サイトについて
+            </a>
+          </li>
+
+        </ul>
+
+      </nav>
+
+      <div class="auth-area">
+
+        <div id="userInfo"></div>
+
+        <div class="auth-buttons">
+
+          <button id="loginButton">
+            Google Login
+          </button>
+
+          <button id="logoutButton">
+            Logout
+          </button>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </header>
+
+  <main class="container">
+
+    <section class="user-profile" id="userProfile">
+
+      <p class="empty-message">
+        ユーザーを読み込み中...
+      </p>
+
+    </section>
+
+    <section class="reviews">
+
+      <h2 class="user-review-title">
+        Reviews
+      </h2>
+
+      <div class="review-grid" id="userReviewGrid"></div>
+
+    </section>
+
+  </main>
+
+  <footer class="footer">
+
+    <div class="container">
+
+      <p>
+        May the 4th be with you.
+      </p>
+
+    </div>
+
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+
+  <script src="./js/profile.js"></script>
+
+  <script src="./js/supabase.js"></script>
+
+  <script src="./js/user.js"></script>
+
+</body>
+
+</html>

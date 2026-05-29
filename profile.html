@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+
+  <meta charset="UTF-8" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>
+    Profile
+  </title>
+
+  <link rel="icon" href="./images/ファビコン.jpeg" />
+
+  <link rel="stylesheet" href="./css/style.css" />
+
+</head>
+
+<body>
+
+  <header class="header">
+
+    <div class="header-inner">
+
+      <h1 class="logo">
+        DEVICE REVIEW
+      </h1>
+
+      <nav class="nav-center">
+
+        <ul class="nav-list">
+
+          <li>
+            <a href="./index.html">
+              REVIEW一覧
+            </a>
+          </li>
+
+          <li>
+            <a href="./board.html">
+              掲示板
+            </a>
+          </li>
+
+          <li>
+            <a href="./profile.html">
+              プロフィール
+            </a>
+          </li>
+
+          <li>
+            <a href="./about.html">
+              サイトについて
+            </a>
+          </li>
+
+        </ul>
+
+      </nav>
+
+      <div class="auth-area">
+
+        <div id="userInfo"></div>
+
+        <div class="auth-buttons">
+
+          <button id="loginButton">
+            Google Login
+          </button>
+
+          <button id="logoutButton">
+            Logout
+          </button>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </header>
+
+  <main class="container">
+
+    <section class="profile-page">
+
+      <div class="profile-card">
+
+        <h2 class="profile-title">
+          Edit Profile
+        </h2>
+
+        <p class="profile-subtitle">
+          Change your username, X account, and bio.
+        </p>
+
+        <form class="profile-form" id="profileForm">
+
+          <div class="avatar-upload">
+
+            <img id="avatarPreview" class="avatar-preview" alt="avatar preview">
+
+            <div class="avatar-upload-right">
+
+              <label for="avatar" class="avatar-upload-button">
+                Change your icon
+              </label>
+
+            </div>
+
+            <input type="file" id="avatar" accept="image/*">
+
+          </div>
+
+          <input type="text" id="username" placeholder="Username">
+
+          <input type="text" id="twitter" placeholder="X / Twitter ID">
+
+          <textarea id="bio" placeholder="自己紹介を書いてみよう"></textarea>
+
+          <h3 class="profile-section-title">
+            Device Setup
+          </h3>
+
+          <input type="text" id="mouse" placeholder="Mouse">
+
+          <input type="text" id="keyboard" placeholder="Keyboard">
+
+          <input type="text" id="mousepad" placeholder="Mousepad">
+
+          <input type="text" id="monitor" placeholder="Monitor">
+
+          <input type="text" id="audio" placeholder="Audio">
+
+          <input type="text" id="sensitivity" placeholder="Sensitivity">
+
+          <input type="text" id="main_game" placeholder="Main Game">
+
+          <button type="submit" class="profile-save-button">
+            Save Profile
+          </button>
+
+        </form>
+
+      </div>
+
+    </section>
+
+  </main>
+
+  <footer class="footer">
+
+    <div class="container">
+
+      <p>
+        May the 4th be with you.
+      </p>
+
+    </div>
+
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+
+  <script src="./js/profile.js"></script>
+
+  <script src="./js/supabase.js"></script>
+
+  <script src="./js/profile-page.js"></script>
+
+</body>
+
+</html>

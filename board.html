@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>
+        掲示板
+    </title>
+
+    <link rel="icon" href="./images/ファビコン.jpeg" />
+
+    <link rel="stylesheet" href="./css/style.css">
+
+</head>
+
+<body>
+
+    <header class="header">
+
+        <div class="header-inner">
+
+            <h1 class="logo">
+                DEVICE REVIEW
+            </h1>
+
+            <nav class="nav-center">
+
+                <ul class="nav-list">
+
+                    <li>
+                        <a href="./index.html">
+                            REVIEW一覧
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="./board.html">
+                            掲示板
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="./profile.html">
+                            プロフィール
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="./about.html">
+                            サイトについて
+                        </a>
+                    </li>
+
+                </ul>
+
+            </nav>
+
+            <div class="auth-area">
+
+                <div id="userInfo"></div>
+
+                <div class="auth-buttons">
+
+                    <button id="loginButton">
+                        Google Login
+                    </button>
+
+                    <button id="logoutButton">
+                        Logout
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </header>
+
+    <main class="container">
+
+        <section class="board-page">
+
+            <div class="board-top">
+
+                <h2>
+                    掲示板
+                </h2>
+
+                <a href="./write-board.html" class="board-write-button">
+                    投稿する
+                </a>
+
+            </div>
+
+            <div class="search-box board-search-box">
+
+                <span class="search-icon">
+                    🔍
+                </span>
+
+                <input type="text" id="boardSearchInput" placeholder="掲示板を検索...">
+
+            </div>
+
+            <div class="filter-buttons board-filter-buttons">
+
+                <button class="active" data-category="All">
+                    All
+                </button>
+
+                <button data-category="雑談">
+                    雑談
+                </button>
+
+                <button data-category="質問">
+                    質問
+                </button>
+
+                <button data-category="相談">
+                    相談
+                </button>
+
+                <button data-category="デスク環境">
+                    デスク環境
+                </button>
+
+                <button data-category="新製品">
+                    新製品
+                </button>
+
+            </div>
+
+            <div class="board-list" id="boardList"></div>
+
+            <aside class="device-ranking">
+
+                <h3>
+                    使用率
+                </h3>
+
+                <div id="deviceRankingList"></div>
+
+            </aside>
+
+        </section>
+
+    </main>
+
+    <footer class="footer">
+
+        <div class="container">
+
+            <p>
+                May the 4th be with you.
+            </p>
+
+        </div>
+
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+
+    <script src="./js/profile.js"></script>
+
+    <script src="./js/supabase.js"></script>
+
+    <script src="./js/board.js"></script>
+
+</body>
+
+</html>
